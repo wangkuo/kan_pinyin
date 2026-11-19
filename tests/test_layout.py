@@ -63,14 +63,18 @@ def test_word_never_split_across_rows():
 
 
 def test_pagination_splits_rows_not_words():
-    texts = [f"词{i}" for i in range(50)]
+    # 关键：每个词都是 2 字符，避免混入 3 字符把每行容量打散
+    texts = [chr(0x4E00 + i) + "天" for i in range(50)]
     layout = build_layout(make_words(texts), A4, 16.0, True)
 
     total_rows = sum(len(page.rows) for page in layout.pages)
-    assert total_rows == 13                     # 50 个 2 字词 → 每行 4 个 → 13 行
-    assert len(layout.pages) == 2               # 每页 8 行 → 2 页
+    # 50 个 2 字词 → 每行 4 个 → ceil(50/4) = 13 行
+    assert total_rows == 13
+    # 每页 8 行 → 2 页
+    assert len(layout.pages) == 2
     assert all(len(page.rows) <= 8 for page in layout.pages)
 
+    # 顺序保持，无词被拆分
     flat = [w.text for page in layout.pages for row in page.rows for w in row.words]
     assert flat == texts
 
