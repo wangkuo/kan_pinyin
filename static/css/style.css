@@ -1,0 +1,240 @@
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f5f6f8;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  min-width: 1024px;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC",
+               "Noto Sans CJK SC", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- 顶部 ---------------- */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.subtitle { font-size: 14px; color: var(--muted); }
+
+/* ---------------- 主体 ---------------- */
+.app {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.panel {
+  width: 380px;
+  flex: none;
+  overflow-y: auto;
+  padding: 16px;
+  background: #fff;
+  border-right: 1px solid var(--border);
+}
+
+.field {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.field-label b { color: var(--primary); }
+
+.field-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: inherit;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+textarea:focus { border-color: var(--primary); }
+
+input[type="range"] {
+  width: 100%;
+  height: 28px;
+  accent-color: var(--primary);
+}
+
+.segmented {
+  display: flex;
+  gap: 8px;
+}
+
+.seg {
+  flex: 1;
+  height: 40px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #374151;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.seg:hover { border-color: var(--primary); }
+
+.seg.active {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.checks label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 8px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checks input { accent-color: var(--primary); }
+
+.primary {
+  width: 100%;
+  height: 46px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #fff;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.primary:hover { background: var(--primary-dark); }
+
+.primary:disabled {
+  background: #93b0f5;
+  cursor: not-allowed;
+}
+
+/* ---------------- 预览 ---------------- */
+.preview {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.download {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  font-size: 15px;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.download:hover { background: var(--primary-dark); }
+
+.download.disabled {
+  background: #cbd5e1;
+  pointer-events: none;
+}
+
+#pdf-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+/* ---------------- 底部提示 ---------------- */
+.tips {
+  height: 104px;
+  flex: none;
+  overflow-y: auto;
+  padding: 10px 20px;
+  font-size: 15px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+}
+
+#tips-summary { color: #374151; }
+
+#tips-summary.error { color: #b91c1c; }
+
+#tips-list {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  color: #b45309;
+}
+
+#tips-list li { margin-bottom: 2px; }

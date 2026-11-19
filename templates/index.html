@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>看拼音写词语</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>看拼音写词语</h1>
+  <span class="subtitle">输入词语 → 自动生成拼音田字格练习卷 → 打印</span>
+</header>
+
+<div class="app">
+  <aside class="panel">
+    <label class="field">
+      <span class="field-label">词语（一行一个，也可用逗号 / 顿号 / 空格分隔）</span>
+      <textarea id="words" rows="11"
+        placeholder="春天&#10;花朵|huā duǒ&#10;小桥"></textarea>
+      <span class="field-hint">多音字可手动指定：词语|pīn yīn</span>
+    </label>
+
+    <div class="field">
+      <span class="field-label">纸张</span>
+      <div class="segmented" id="paper-group">
+        <button type="button" class="seg active" data-paper="A4">A4</button>
+        <button type="button" class="seg" data-paper="A5">A5</button>
+      </div>
+    </div>
+
+    <label class="field">
+      <span class="field-label">田字格边长 <b id="grid-size-val">16mm</b></span>
+      <input type="range" id="grid-size" min="13" max="22" step="0.5" value="16">
+    </label>
+
+    <label class="field">
+      <span class="field-label">拼音字号 <b id="pinyin-size-val">10pt</b></span>
+      <input type="range" id="pinyin-size" min="9" max="14" step="0.5" value="10">
+    </label>
+
+    <div class="field checks">
+      <label><input type="checkbox" id="show-header" checked> 显示标题栏</label>
+      <label><input type="checkbox" id="show-answer"> 附答案页</label>
+      <label><input type="checkbox" id="shuffle"> 打乱顺序</label>
+      <label><input type="checkbox" id="show-page-number"> 显示页码</label>
+    </div>
+
+    <button type="button" id="generate" class="primary">生成预览</button>
+  </aside>
+
+  <main class="preview">
+    <div class="preview-toolbar">
+      <span id="preview-hint">尚未生成预览</span>
+      <a id="download" class="download disabled" href="#" download>下载 PDF</a>
+    </div>
+    <iframe id="pdf-frame" title="PDF 预览"></iframe>
+  </main>
+</div>
+
+<footer class="tips">
+  <div id="tips-summary">等待输入…</div>
+  <ul id="tips-list"></ul>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

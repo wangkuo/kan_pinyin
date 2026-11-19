@@ -1,0 +1,4 @@
+Flask==3.0.*
+pypinyin==0.51.*
+reportlab==4.0.*
+gunicorn==21.*

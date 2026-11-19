@@ -1,0 +1,13 @@
+services:
+  kan-pinyin:
+    build:
+      context: .
+    image: kan-pinyin:1.0
+    container_name: kan-pinyin
+    platform: linux/arm64
+    ports:
+      - "8000:8000"
+    environment:
+      - TZ=Asia/Shanghai
+    mem_limit: 512m
+    restart: unless-stopped
